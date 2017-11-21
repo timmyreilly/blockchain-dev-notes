@@ -15,8 +15,10 @@ These instructions are used to install a Quorum environment into your Azure subs
  - Leave all other options as default 
  - Press OK 
  - Press Create at final configuration step.  The licensing information is only stating that there is a charge for using Azure to run the Quorum deployment; however, there’s no cost for the actual Quorum assets It will take ~2-5 minutes to deploy.  You can see this both on your Azure dashboard, and you can see its status by selecting the bell-shaped notification button on the top right of the web frame 
-4. Start SSH Client (Putty, Bash, etc)  
+4. Start SSH Client (Putty, Bash, etc) and connect to Virtual Machine
  - From the Azure portal, select the Quorum virtual machine you just deployed and copy its public IP address 
+ - `$ ssh username@21.12.21.12`
+ or 
  - Start PuTTY on your local machine 
  - Paste in the IP address and leave the port at 22 and connection type as SSH 
  - In Saved Sessions, name your saved session, e.g. “QuorumDemo” 
