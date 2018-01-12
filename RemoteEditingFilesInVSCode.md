@@ -4,7 +4,36 @@
 
 Create Azure Ubuntu VM
 
-No need to mess with ports. 
+Here are some instructions for the Azure CLI: 
+
+```powershell
+// Login: 
+> az login
+
+// Set Subscription if you have a couple: 
+> az account set --subscription "d35cee73-12bb-4a1f-bdd4-63b296dd59c5"
+
+// Create a resource group to put a vm in: 
+> az group create --name myTempResourceGroup --location southcentralus
+
+// Get a list of available image types: 
+> az vm image list --output table 
+
+// And a list of image sizes available in your location: 
+> az vm list-skus --output table | grep southcentralus 
+
+// Now create vm: 
+> az vm create -n MyTempVM --resource-group myTempResourceGroup --image UbuntuLTS --admin-username conductor --admin-password 4321Password --size Standard_A8
+```
+
+No need to mess with ports. You're ready to start working. If you want to *delete* the VM and Resource group when you're done: 
+```powershell
+// Find it: 
+> az group list
+
+// And DELETE IT!
+> az group delete -n myTempResourceGroup
+```
 
 ### On your computer: 
 
@@ -26,15 +55,17 @@ Put these settings in your user settings:
 
 Leave the remote host as 127.0.0.1, this confused me at first but this is where you're going to host the rmate server on your machine. 
 
+`Ctrl+Shift+p -> Remote: start server`
+
 Now ssh into an Ubuntu VM: 
 
 Need to use port forwarding. 
 
 `$ ssh -R 52698:localhost:52698 root@123.123.123.123`
 
-`ssh -R 52698:localhost:52698 conductor@23.102.170.112`
-
 ### On the server: 
+
+Now that you've ssh'd into the VM in Azure. 
 
 Install rmate for bash: [(from aurora on github)](https://github.com/aurora/rmate)
 
@@ -43,8 +74,25 @@ Install rmate for bash: [(from aurora on github)](https://github.com/aurora/rmat
 
 Now edit a file: 
 
-`rmate text.txt` 
+`$ rmate text.txt` 
+
+Save the file and check it out back on the ssh connection: 
+
+`$ cat text.txt`
+
+## Full Workflow: 
+
+Turn on Ubuntu VM. 
+
+Open VS Code. 
+
+`F1 Remote: start server` 
+
+ssh into VM: `$ ssh -R 52698:localhost:52698 conductor@23.102.170.112`
+
+launch rmate and edit file: `rmate file.txt` 
+
+Save and succeeeeeed! 
 
 
- 
 
