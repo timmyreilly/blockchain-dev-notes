@@ -6,7 +6,7 @@ Create Azure Ubuntu VM
 
 Here are some instructions for the Azure CLI: 
 
-```powershell
+```
 // Login: 
 > az login
 
@@ -22,11 +22,19 @@ Here are some instructions for the Azure CLI:
 // And a list of image sizes available in your location: 
 > az vm list-skus --output table | grep southcentralus 
 
+// the "grep" won't work in vanilla powershell, but will work with git shell. You can also just remove the "| grep southcentralus" and do a bit of scrolling. 
+
 // Now create vm: 
-> az vm create -n MyTempVM --resource-group myTempResourceGroup --image UbuntuLTS --admin-username conductor --admin-password 4321Password --size Standard_A8
+> az vm create -n MyTempVM --resource-group myTempResourceGroup --image UbuntuLTS --admin-username conductor --admin-password 4321Password --size Standard_DS1
+
+// Get IP address of new VM: 
+az vm list-ip-addresses  -n MyTempVM 
 ```
 
-No need to mess with ports. You're ready to start working. If you want to *delete* the VM and Resource group when you're done: 
+No need to mess with ports. You're ready to start working. 
+
+If you want to *delete* the VM and Resource group when you're done: 
+
 ```powershell
 // Find it: 
 > az group list
