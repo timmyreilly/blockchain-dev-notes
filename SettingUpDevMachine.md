@@ -12,6 +12,11 @@ Connect to VM:
 
 `$ ssh -R 52698:localhost:52698 conductor@23.102.170.112` 
 
+Install Build Essentials:
+
+`$ sudo apt-get install build-essential`
+
+
 Install NVM and Node: 
 
 `$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash`

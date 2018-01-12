@@ -42,11 +42,11 @@ If you want to *delete* the VM and Resource group when you're done:
 // And DELETE IT!
 > az group delete -n myTempResourceGroup
 
-// Or you could just stop it: 
-az vm stop -g myTempResourceGroup -n MyTempVM
+// Or you could just deallocate it: 
+> az vm deallocate -g myTempResourceGroup -n MyTempVM
 
 // Then Start it again later: 
-az vm start -g myTempResourceGroup -n MyTempVM
+> az vm start -g myTempResourceGroup -n MyTempVM
 ```
 
 ### On your computer: 
@@ -98,9 +98,7 @@ Save the file and check it out back on the ssh connection:
 
 Turn on Ubuntu VM. 
 
-Open VS Code. 
-
-`F1 Remote: start server` 
+Open VS Code + Start server: `F1 Remote: start server` 
 
 ssh into VM: `$ ssh -R 52698:localhost:52698 conductor@23.102.170.112`
 
