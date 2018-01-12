@@ -35,12 +35,18 @@ No need to mess with ports. You're ready to start working.
 
 If you want to *delete* the VM and Resource group when you're done: 
 
-```powershell
+```
 // Find it: 
 > az group list
 
 // And DELETE IT!
 > az group delete -n myTempResourceGroup
+
+// Or you could just stop it: 
+az vm stop -g myTempResourceGroup -n MyTempVM
+
+// Then Start it again later: 
+az vm start -g myTempResourceGroup -n MyTempVM
 ```
 
 ### On your computer: 
